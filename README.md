@@ -1,7 +1,9 @@
 
+To download dataset from kaggle:
+https://www.kaggle.com/datasets/abhinavmoudgil95/short-jokes/data
 
 
-Joke Generator App
+Joke Generator App(Adult Jokes)
 This is a Flask web application that generates jokes based on user-provided topics. The app uses a fine-tuned GPT-2 model from the transformers library to generate contextually relevant and humorous content.
 
 Features
