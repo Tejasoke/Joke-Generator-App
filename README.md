@@ -24,3 +24,15 @@ pip install flask transformers torch joblib pandas
 
 Run the Application:
 python model.py
+
+Set the data pre processing file path in ipynb file in jupyter notebook then pre process the file and dump the processed csv file, prepare the file for model traning here using GPT2LMHeadModel is hugging face library provided by transfoemrer library then select following files:
+1. config.json
+2. merges.txt
+3. model.safetensors
+4. tokenizer_conifg.json
+5. vocab.json
+and then place this all in the folder named fine-tuned-gpt2 and then open model.py file and set the path in line 10 and then same goes for index.html file also located in templates file, create a template file for index.html if there is not there and then fir up model.py app from terminal or code runner you will see like this Open your web browser and navigate to http://127.0.0.1:5000/ to use the app.
+it means the app is running succesfully and welcomed by this screen
+![image](https://github.com/user-attachments/assets/f1cb5ad6-3d6d-4d44-9e68-b37a7e6b86cf)
+![image](https://github.com/user-attachments/assets/11ddd218-4019-4e4b-89c6-4b1488594af4)
+
