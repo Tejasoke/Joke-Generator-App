@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Joke Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+            color: #333;
+        }
+        .joke-button {
+            width: 100%;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Joke Generator</h1>
+        <div class="form-group">
+            <label for="topic">Enter a Topic</label>
+            <input type="text" id="topic" class="form-control" placeholder="Enter a topic..." required>
+        </div>
+        <button id="generate" class="btn btn-primary joke-button"><i class="fas fa-laugh"></i> Generate Joke</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#generate').click(function() {
+                const topic = $('#topic').val();
+                if (topic.trim() === '') {
+                    $('#result').text('Please enter a topic.').css('color', 'red');
+                    return;
+                }
+                $.ajax({
+                    url: '/generate_joke',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ topic: topic }),
+                    success: function(response) {
+                        $('#result').text(response.joke).css('color', 'green');
+                    },
+                    error: function(xhr) {
+                        $('#result').text(xhr.responseJSON.error).css('color', 'red');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
